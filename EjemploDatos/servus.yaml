@@ -1,0 +1,38 @@
+DATABASE: 
+ CLIENT: 
+  userId: 1
+  userType: 1
+  name: Esteban
+  adress: "Olivereta 35"
+  mobile: 621214914
+  birthday: "05-04-1990"
+  accessCode: sancochito69
+  active: true
+ SERVICETYPE: 
+  serviceType: 1
+  name: "Antonio Garrido"
+ SERVICE: 
+  serviecId: 1
+  serviceType: MECANICO
+  adminId: 1
+  description: "Una pequeña empresa"
+  adress: "Perez Galdos 45"
+  name: "Antonio Garrido"
+  mobile: 623432145
+  active: true
+ SERVICEITEM: 
+  serviceType: 1
+  itemId: 1
+  descripcion: "pequeña descripcion"
+  itemValue: "Perez Galdos 45"
+ SERVICEDETAIL: 
+  serviecId: 1
+  serviceType: 1
+  itemId: 1
+ RESERVE: 
+  reserveId: 1
+  userId: 1
+  serviceId: 1
+  reserveDate: "20-12-2020"
+  reserveHour: "20:00"
+  reserveDuration: "02:00"

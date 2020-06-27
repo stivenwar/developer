@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DATABASE>
+	<CLIENT>
+		<userId>1</userId>
+		<userType>1</userType>
+		<name>Esteban</name>
+		<adress>Olivereta 35</adress>
+		<mobile>621214914</mobile>
+		<birthday>05-04-1990</birthday>
+		<accessCode>sancochito69</accessCode>
+		<active>true</active>
+	</CLIENT>
+	<SERVICETYPE>
+		<serviceType>1</serviceType>
+		<name>Antonio Garrido</name>
+	</SERVICETYPE>
+	<SERVICE>
+		<serviecId>1</serviecId>
+		<serviceType>MECANICO</serviceType>
+		<adminId>1</adminId>
+		<description>Una pequeña empresa </description>
+		<adress>Perez Galdos 45</adress>
+		<name>Antonio Garrido</name>
+		<mobile>623432145</mobile>
+		<active>true</active>
+	</SERVICE>
+	<SERVICEITEM>
+		<serviceType>1</serviceType>
+		<itemId>1</itemId>
+		<descripcion>pequeña descripcion</descripcion>
+		<itemValue>Perez Galdos 45</itemValue>
+	</SERVICEITEM>
+	<SERVICEDETAIL>
+		<serviecId>1</serviecId>
+		<serviceType>1</serviceType>
+		<itemId>1</itemId>
+	</SERVICEDETAIL>
+	<RESERVE>
+		<reserveId>1</reserveId>
+		<userId>1</userId>
+		<serviceId>1</serviceId>
+		<reserveDate>20-12-2020</reserveDate>
+		<reserveHour>20:00</reserveHour>
+		<reserveDuration>02:00</reserveDuration>
+	</RESERVE>
+</DATABASE>
