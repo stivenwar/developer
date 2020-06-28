@@ -1,92 +1,85 @@
-CREATE SCHEMA app;
-USE app ;
+CREATE DATABASE app;
+USE app;
 
 -- -----------------------------------------------------
--- Table USER
+-- Table CLIENT
 -- -----------------------------------------------------
-CREATE TABLE USER (
-  userId INT NOT NULL AUTO_INCREMENT,
-  name VARCHAR(45) NOT NULL,
-  adress VARCHAR(45) NOT NULL,
-  mobile DECIMAL(9) NOT NULL,
-  birthday DATE NOT NULL,
-  accessCode VARCHAR(45) NOT NULL,
-  active VARCHAR(45) NOT NULL,
+CREATE TABLE CLIENT (
+  userId VARCHAR(80) NOT NULL,
+  userType VARCHAR(1) NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  mobile VARCHAR(80) NOT NULL,
+  address VARCHAR(80),
+  birthday DATE,
+  keyCode VARCHAR(80) NOT NULL,
+  active BOOLEAN NOT NULL,
   PRIMARY KEY (userId)
-  );
+);
 
-
+-- -----------------------------------------------------
+-- Table SERVICETYPE
+-- -----------------------------------------------------
+CREATE TABLE SERVICETYPE (
+  serviceType INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(80) NOT NULL,
+  PRIMARY KEY (serviceType) 
+);
 
 -- -----------------------------------------------------
 -- Table SERVICE
 -- -----------------------------------------------------
 CREATE TABLE SERVICE (
   serviceId INT NOT NULL AUTO_INCREMENT,
-  serviceType VARCHAR(45) NOT NULL,
-  userId INT NOT NULL,
-  name VARCHAR(45) NOT NULL,
-  description VARCHAR(45) NOT NULL,
-  adress VARCHAR(45) NOT NULL,
-  movile VARCHAR(45) NOT NULL,
-  active VARCHAR(45) NOT NULL,
-  PRIMARY KEY (serviceId, serviceType, userId),
-  UNIQUE (serviceType),
-  FOREIGN KEY (userId) REFERENCES USER (userId)
-  );
-
-
+  serviceType INT NOT NULL,
+  adminId VARCHAR(80) NOT NULL,
+  name VARCHAR(80) NOT NULL,
+  description VARCHAR(80) NOT NULL,
+  address VARCHAR(80) NOT NULL,
+  mobile VARCHAR(80) NOT NULL,
+  active BOOLEAN NOT NULL,
+  PRIMARY KEY (serviceId),
+  FOREIGN KEY (serviceType) REFERENCES SERVICETYPE (serviceType),
+  FOREIGN KEY (adminId) REFERENCES CLIENT (userId)
+);
 
 
 -- -----------------------------------------------------
--- Table SERVICETYPE
+-- Table SERVICEITEM
 -- -----------------------------------------------------
-CREATE TABLE SERVICETYPE (
-  serviceType VARCHAR(45) NOT NULL,
-  name VARCHAR(45) NOT NULL,
-    FOREIGN KEY (serviceType) REFERENCES SERVICE (serviceType)
-    );
-    
-
--- -----------------------------------------------------
--- Table ITEMS
--- -----------------------------------------------------
-CREATE TABLE ITEMS (
-  itemId INT NOT NULL,
-  serviceId INT NOT NULL,
-  description VARCHAR(45) NOT NULL,
-  value VARCHAR(45) NOT NULL,
-  PRIMARY KEY (itemId, serviceId),
-    FOREIGN KEY (serviceId) REFERENCES SERVICE (serviceId)
-    );
-
+CREATE TABLE SERVICEITEM (
+   serviceType INT NOT NULL AUTO_INCREMENT,
+  itemId INT NOT NULL ,
+  description VARCHAR(80) NOT NULL,
+  itemValue VARCHAR(80) NOT NULL,
+  PRIMARY KEY (serviceType, itemId),
+  FOREIGN KEY (serviceType) REFERENCES SERVICETYPE (serviceType)
+);
 
 
 -- -----------------------------------------------------
 -- Table SERVICEDETAIL
 -- -----------------------------------------------------
 CREATE TABLE SERVICEDETAIL (
-  userId INT NOT NULL,
   serviceId INT NOT NULL,
+  serviceType INT NOT NULL,
   itemId INT NOT NULL,
-  PRIMARY KEY (userId, serviceId, itemId),
-    FOREIGN KEY (userId) REFERENCES USER (userId),
-    FOREIGN KEY (serviceId) REFERENCES SERVICE (serviceId),
-    FOREIGN KEY (itemId) REFERENCES ITEMS (itemId)
-    );
-
+  PRIMARY KEY (serviceId,itemId),
+  FOREIGN KEY (serviceId) REFERENCES SERVICE (serviceId),
+  FOREIGN KEY (serviceType,itemId) REFERENCES SERVICEITEM (serviceType,itemId)
+);
 
 
 -- -----------------------------------------------------
 -- Table RESERVE
 -- -----------------------------------------------------
 CREATE TABLE RESERVE (
-  adminId INT NOT NULL AUTO_INCREMENT,
-  userId INT NOT NULL,
+  reserveId INT NOT NULL AUTO_INCREMENT,
+  userId VARCHAR(80) NOT NULL,
   serviceId INT NOT NULL,
-  date date NOT NULL,
-  hour time NOT NULL,
-  duration VARCHAR(45) NOT NULL,
-  PRIMARY KEY (adminId, userId, serviceId),
-    FOREIGN KEY (userId) REFERENCES USER (userId) ,
-    FOREIGN KEY (serviceId) REFERENCES SERVICE (serviceId)
-    );
+  reserveDate date NOT NULL,
+  reserveHour time NOT NULL,
+  reserveDuration VARCHAR(80) NOT NULL,
+  PRIMARY KEY (reserveId),
+  FOREIGN KEY (userId) REFERENCES CLIENT (userId) ,
+  FOREIGN KEY (serviceId) REFERENCES SERVICE (serviceId)
+);

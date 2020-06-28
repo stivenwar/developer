@@ -83,4 +83,30 @@ CREATE TABLE RESERVE (
   FOREIGN KEY (userId) REFERENCES CLIENT (userId) ,
   FOREIGN KEY (serviceId) REFERENCES SERVICE (serviceId)
 );
+insert into app.client values('1','1','esteban','621214914','Olivereta 35','1990-05-04','sancochito69',true);
+insert into app.client values('2','1','sebastian','612345677','Olivereta 35','1992-01-21','silversurfer',true);
+insert into app.client values('3','1','juanfer','666328282','Albocacer 19','1996-04-12','alibaba',true);
+
+insert into app.servicetype values(1,'Mecanica');
+insert into app.servicetype values(2,'Peluqueria');
+insert into app.servicetype values(3,'Mercado');
+
+insert into app.service values(1,'1',1,'Alberto','pequeña empresa','Monte Olivo 40','666666666',true);
+insert into app.service values(2,'2',1,'Begoña','pequeña empresa','Perez galdos 1','777777777',true);
+insert into app.service values(3,'3',1,'Hugo','pequeña empresa','Calle Brazil 42','123456789',true);
+
+insert into app.serviceitem values(1,1,'cambio de aceite','30€');
+insert into app.serviceitem values(2,1,'corte','10€');
+insert into app.serviceitem values(3,1,'pescado variado','100€');
+
+insert into app.servicedetail values(1,1,1);
+insert into app.servicedetail values(2,2,1);
+insert into app.servicedetail values(3,3,1);
+
+insert into app.reserve values(1,'1',1,'2020-05-05','20:00','02:00');
+insert into app.reserve values(2,'2',2,'2020-01-01','16:00','02:00');
+insert into app.reserve values(3,'3',3,'2020-05-05','15:00','02:00');
+
+
+
 
