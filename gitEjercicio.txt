@@ -2,10 +2,18 @@ https://github.com/stivenwar/developer
 
 
 git init --> para crear el proyecto .git en el directorio seleccionado
+
 git status -->para ver que hay en nuestro repositorio local y que no
+
 git add "nombre de archivo" -->preparando para hacer el commit
+
 git add -A -->si quieres añadir todos los archivos
+
 git commit "nombre del archivo" -->crea el commit y lo prepara para subirlo al repositorio gidhub
+
 git push -u origin master lo subimos al repositorio que tengamos en la red
+
 git branch "nombre rama" para crear una nueva rama 
+
+git checkout -->
 
